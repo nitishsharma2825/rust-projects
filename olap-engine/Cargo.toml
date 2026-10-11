@@ -1,0 +1,10 @@
+[package]
+name = "olap-engine"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+parquet = "57"
+sqlparser = "0.60"
+rustyline = "17"
+tabled = "0.12.2"

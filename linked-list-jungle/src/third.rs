@@ -1,18 +1,18 @@
 use std::rc::Rc;
 
-pub struct List<T> {
-    head: Link,
-}
-
 type Link<T> = Option<Rc<Node<T>>>;
+
+pub struct List<T> {
+    head: Link<T>,
+}
 
 struct Node<T> {
     elem: T,
     next: Link<T>,
 }
 
-pub struct Iter<`a, T> {
-    next: Option<&`a, Node<T>>,
+pub struct Iter<'a, T> {
+    next: Option<&'a Node<T>>,
 }
 
 impl<T> List<T> {
@@ -45,8 +45,8 @@ impl<T> List<T> {
     }
 }
 
-impl<`a, T> Iterator for Iter<`a, T> {
-    type Item = &`a T;
+impl<'a, T> Iterator for Iter<'a, T> {
+    type Item = &'a T;
     
     fn next(&mut self) -> Option<Self::Item> {
         self.next.map(|node| {
